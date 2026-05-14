@@ -1,57 +1,103 @@
 \section{Literature Review}
 
-\subsection{EV Charging in Weak Grid Systems}
+\subsection{Introduction}
 
-Electric vehicle (EV) charging infrastructure is traditionally designed for stable, high-capacity electrical grids. However, in many developing regions, including Kenya and other Sub-Saharan African countries, distribution networks are characterized by limited transformer capacity, voltage fluctuations, and localized outages \cite{africa_ev_grid}.
+The increasing adoption of electric vehicles (EVs) has intensified research into sustainable and reliable charging infrastructure. In recent years, hybrid renewable energy systems combining solar photovoltaic (PV) generation, battery energy storage, and grid interaction have received significant attention as viable solutions for EV charging applications.
 
-These constraints significantly affect the scalability of EV charging systems. High-power charging loads introduce additional stress on already constrained feeders, leading to peak demand amplification and potential system instability. As a result, unmanaged charging strategies are unsuitable in weak-grid environments, necessitating coordinated energy management approaches.
+However, most existing studies are developed under assumptions of stable grid infrastructure and highly predictable operating conditions. Such assumptions are often unsuitable for developing regions such as Kenya and many Sub-Saharan African countries where electrical infrastructure constraints, grid instability, and reliance on backup generation remain significant operational realities.
 
----
-
-\subsection{Solar PV Integration in EV Charging Systems}
-
-Solar photovoltaic (PV) energy has emerged as a key renewable solution for EV charging due to its abundance and declining cost. In equatorial regions such as Kenya, high solar irradiance levels make PV systems technically viable for distributed charging infrastructure \cite{pv_ev_charging_review}.
-
-However, PV generation is inherently intermittent and non-dispatchable. Its output varies with weather conditions, time of day, and seasonal changes. This intermittency introduces uncertainty in energy availability, making standalone PV systems insufficient for reliable EV charging without complementary energy buffering mechanisms.
+This chapter reviews existing research related to EV charging systems, solar PV integration, battery energy storage systems, diesel backup utilization, and hybrid energy management strategies. The objective is to identify current limitations in the literature and establish the research gap addressed by this study.
 
 ---
 
-\subsection{Battery Energy Storage in Hybrid Systems}
+\subsection{EV Charging Infrastructure in Weak-Grid Environments}
 
-Battery Energy Storage Systems (BESS) are widely used to address the intermittency of renewable energy sources in hybrid systems. In EV charging applications, BESS provides multiple operational benefits, including peak shaving, load shifting, and smoothing of PV output fluctuations \cite{bess_hybrid_systems}.
+Conventional EV charging systems are typically designed for electrical networks with stable voltage profiles, adequate transformer capacity, and high supply reliability. In many developing countries, however, distribution networks are characterized by intermittent outages, constrained feeder capacities, and fluctuating supply quality \cite{africa_ev_grid}.
 
-Despite these advantages, battery systems introduce additional complexity. Improper sizing or inefficient energy management can lead to accelerated degradation, reduced lifecycle performance, and suboptimal utilization of stored energy. This makes the design of intelligent dispatch strategies critical in hybrid EV charging systems.
+Several studies have shown that uncontrolled EV charging can substantially increase peak demand and place additional stress on already constrained distribution systems. This is particularly critical in urban and peri-urban areas where network expansion may not keep pace with increasing electrification demand.
 
----
+In weak-grid environments, charging interruptions reduce user confidence and may hinder widespread EV adoption. Consequently, charging infrastructure in such regions requires energy management strategies capable of compensating for unstable grid conditions while maintaining operational reliability.
 
-\subsection{Diesel Backup and Emissions Challenges}
-
-In weak-grid environments, diesel generators are commonly deployed as backup power sources to ensure uninterrupted service delivery. While this approach improves system reliability, it introduces significant operational and environmental drawbacks.
-
-Diesel generators contribute to high fuel consumption costs and increased greenhouse gas emissions, directly conflicting with the sustainability objectives of EV adoption \cite{diesel_microgrid_emissions}. Furthermore, reliance on fossil-fuel backup systems creates a hybrid dependency that reduces the overall environmental benefit of renewable integration.
+Despite growing interest in EV deployment within Africa, relatively limited research has focused specifically on charging infrastructure design under realistic African grid conditions. Most available models continue to assume grid stability comparable to developed power systems.
 
 ---
 
-\subsection{Energy Management Strategies in Hybrid Systems}
+\subsection{Solar Photovoltaic Integration in EV Charging Systems}
 
-Energy management in hybrid renewable systems has been extensively studied and can generally be classified into three categories: rule-based methods, optimization-based approaches, and intelligent control systems.
+Solar photovoltaic (PV) systems have emerged as one of the most promising renewable energy technologies for EV charging applications due to their modularity, declining installation costs, and environmental benefits \cite{pv_ev_charging_review}.
 
-Rule-based strategies are simple to implement but lack adaptability to dynamic conditions such as fluctuating demand and renewable variability. Optimization-based methods improve performance by minimizing cost or maximizing efficiency; however, they often rely on deterministic assumptions about system behavior.
+The integration of PV systems into EV charging infrastructure offers several advantages, including reduced grid dependence, lower operational emissions, and improved energy sustainability. In regions with high solar irradiance, such as Kenya, solar-assisted charging systems provide significant potential for decentralized charging deployment.
 
-More recent approaches utilize intelligent control techniques, including machine learning and predictive optimization. While these methods offer improved adaptability, they often require extensive data, high computational resources, and may lack interpretability for real-world deployment in resource-constrained environments \cite{energy_management_ev}.
+However, PV generation remains highly intermittent and dependent on weather conditions and solar availability. Cloud cover, seasonal variations, and nighttime operation introduce fluctuations in energy production that directly affect charging reliability.
+
+Existing studies have proposed several approaches for mitigating PV intermittency, including grid support, battery storage integration, and predictive energy management. Nevertheless, many models prioritize renewable maximization without adequately considering weak-grid operational realities or backup generation dependency.
+
+Furthermore, several PV-assisted charging studies assume idealized irradiance conditions and continuous grid support, limiting their applicability to developing-country scenarios.
 
 ---
 
-\subsection{Research Gap and Motivation}
+\subsection{Battery Energy Storage Systems in Hybrid Charging Architectures}
 
-Despite significant progress in hybrid EV charging system design, several critical gaps remain unresolved.
+Battery Energy Storage Systems (BESS) are widely utilized in hybrid renewable systems to improve system stability and operational flexibility \cite{bess_hybrid_systems}.
 
-First, most existing studies do not jointly optimize energy flow across solar PV, battery storage, grid supply, and diesel backup under realistic weak-grid conditions. Instead, they typically focus on partial system optimization.
+In EV charging applications, BESS enables temporary energy buffering between intermittent renewable generation and dynamic charging demand. Battery systems support peak shaving, load leveling, renewable energy smoothing, and improved charging continuity during grid disturbances.
 
-Second, carbon emissions and fuel consumption are often treated as secondary metrics rather than primary optimization objectives. This limits the environmental relevance of proposed solutions, especially in fossil-fuel-dependent backup scenarios.
+Despite these advantages, battery integration introduces additional technical and operational challenges. Frequent cycling, overcharging, deep discharging, and inefficient dispatch strategies can accelerate battery degradation and reduce system lifespan.
 
-Third, many models assume ideal or highly stable grid conditions, which do not reflect the operational realities of Kenyan and similar Sub-Saharan African power systems.
+Several studies have investigated optimal battery sizing and scheduling methods for hybrid charging systems. However, many approaches rely on computationally intensive optimization techniques or deterministic operating assumptions that may not be practical in resource-constrained deployment environments.
 
-Finally, there is a lack of lightweight, adaptive energy management strategies that can be realistically deployed in developing regions with limited computational infrastructure.
+In addition, some existing frameworks focus primarily on economic optimization while giving limited attention to emissions reduction and fuel dependency minimization.
 
-Therefore, this study proposes the development of an adaptive energy management system that simultaneously considers energy reliability, fuel consumption, and carbon emissions under Kenyan weak-grid conditions. The system is intended to bridge the gap between theoretical optimization models and practical deployable solutions for hybrid EV charging infrastructure.
+---
+
+\subsection{Diesel Backup Systems and Environmental Implications}
+
+Diesel generators continue to play a major role in maintaining energy reliability in weak-grid regions due to their operational simplicity and availability. In many developing regions, backup diesel systems are routinely used to compensate for outages and insufficient renewable generation capacity.
+
+While diesel generators improve reliability, they significantly increase fuel consumption costs and greenhouse gas emissions \cite{diesel_microgrid_emissions}. This creates a contradiction within sustainable transportation systems where electric mobility is intended to reduce environmental impact.
+
+Research on hybrid renewable microgrids has shown that excessive diesel utilization can substantially reduce the environmental benefits associated with renewable integration. Furthermore, fluctuating fuel prices increase operational uncertainty and long-term infrastructure costs.
+
+Several studies have therefore explored strategies for minimizing diesel runtime through renewable prioritization and intelligent dispatch control. However, many existing approaches fail to simultaneously consider grid instability, charging reliability, and carbon emissions within a unified framework.
+
+---
+
+\subsection{Energy Management Strategies for Hybrid EV Charging Systems}
+
+Energy management represents one of the most critical aspects of hybrid EV charging infrastructure. Existing approaches can generally be categorized into rule-based methods, optimization-based approaches, and intelligent control strategies.
+
+Rule-based strategies are among the simplest and most widely implemented methods due to their ease of deployment and low computational requirements. These methods typically prioritize energy sources according to predefined operating rules. While practical, rule-based systems often lack adaptability to rapidly changing environmental and load conditions.
+
+Optimization-based methods seek to improve system performance through objective function minimization, including cost reduction, efficiency improvement, or renewable energy maximization. Common techniques include linear programming, dynamic programming, and heuristic optimization methods.
+
+Although optimization approaches provide improved operational performance, many require accurate forecasting and significant computational resources. Furthermore, a large portion of existing optimization studies assume stable grid conditions and deterministic system behavior.
+
+Recent research has also explored intelligent control approaches based on artificial intelligence and machine learning. These techniques offer adaptive capabilities and predictive control potential. However, they often require large datasets, extensive training procedures, and advanced hardware resources that may not be readily available in developing deployment contexts \cite{energy_management_ev}.
+
+As a result, there remains a need for adaptive yet computationally practical energy management strategies suitable for weak-grid environments.
+
+---
+
+\subsection{Research Gap Analysis}
+
+The reviewed literature demonstrates substantial progress in renewable-assisted EV charging systems and hybrid energy management strategies. However, several important gaps remain unresolved.
+
+First, many existing studies focus primarily on either renewable integration or economic optimization without jointly addressing reliability, diesel fuel consumption, and carbon emissions under weak-grid operating conditions.
+
+Second, most available models are developed for highly stable electrical infrastructure environments and therefore do not adequately capture the operational characteristics of Kenyan and similar African distribution systems.
+
+Third, existing intelligent optimization approaches often rely on computational complexity and extensive data requirements that may limit practical deployment in developing regions.
+
+Fourth, limited research has explored integrated hybrid charging systems combining solar PV generation, battery storage, grid interaction, and diesel backup within a unified adaptive control framework specifically tailored for weak-grid EV charging applications.
+
+Therefore, there is a need for a computationally practical adaptive energy management system capable of coordinating renewable generation, storage, grid supply, and backup generation while minimizing fuel consumption and carbon emissions under realistic Kenyan operating conditions.
+
+---
+
+\subsection{Chapter Summary}
+
+This chapter reviewed existing literature related to EV charging infrastructure, solar PV integration, battery energy storage systems, diesel backup generation, and hybrid energy management strategies.
+
+The review identified major limitations in current approaches, particularly regarding weak-grid adaptability, fuel dependency, emissions reduction, and practical deployment suitability in developing regions.
+
+Based on these identified gaps, the next chapter presents the mathematical system model and methodology used to develop the proposed adaptive hybrid energy management framework.
