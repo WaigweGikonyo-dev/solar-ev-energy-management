@@ -1,0 +1,129 @@
+\section{System Model and Methodology}
+
+\subsection{System Overview}
+
+The proposed system consists of a hybrid energy architecture integrating solar photovoltaic (PV) generation, battery energy storage, grid supply, diesel backup generation, and electric vehicle (EV) charging demand. The system is designed for weak-grid environments such as those observed in parts of Kenya, where grid reliability is not guaranteed.
+
+The objective of the system is to ensure continuous EV charging while minimizing operational cost, diesel fuel consumption, and carbon emissions.
+
+---
+
+\subsection{Solar Photovoltaic Power Model}
+
+The output power from the solar PV system is modeled as:
+
+\begin{equation}
+P_{pv}(t) = \eta_{pv} \cdot A \cdot G(t)
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\eta_{pv}$ is the PV conversion efficiency
+    \item $A$ is the panel area
+    \item $G(t)$ is solar irradiance at time $t$
+\end{itemize}
+
+This model captures the time-varying nature of solar energy availability.
+
+---
+
+\subsection{Battery Energy Storage Model}
+
+The state of charge (SOC) of the battery is governed by:
+
+\begin{equation}
+SOC(t+1) = SOC(t) + \frac{P_{ch}(t)\Delta t}{E_{cap}} - \frac{P_{dis}(t)\Delta t}{E_{cap}}
+\end{equation}
+
+subject to:
+
+\begin{equation}
+0 \leq SOC(t) \leq 1
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $E_{cap}$ is battery energy capacity
+    \item $P_{ch}(t)$ is charging power
+    \item $P_{dis}(t)$ is discharging power
+\end{itemize}
+
+---
+
+\subsection{EV Charging Demand Model}
+
+EV charging demand is modeled as a time-varying load:
+
+\begin{equation}
+P_{ev}(t) = \sum_{i=1}^{N} P_i(t)
+\end{equation}
+
+where $N$ represents the number of EVs connected to the charging station.
+
+---
+
+\subsection{Grid Power Model under Weak Conditions}
+
+Grid power availability is constrained as:
+
+\begin{equation}
+P_{grid}(t) \leq P_{grid}^{max}(t)
+\end{equation}
+
+where $P_{grid}^{max}(t)$ varies due to outages and instability, representing weak-grid behavior observed in Kenyan distribution networks.
+
+---
+
+\subsection{Diesel Generator Fuel Consumption Model}
+
+Diesel generator fuel consumption is modeled as:
+
+\begin{equation}
+F(t) = \alpha \cdot P_{diesel}(t)
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\alpha$ is the fuel consumption coefficient
+    \item $P_{diesel}(t)$ is diesel generator output power
+\end{itemize}
+
+---
+
+\subsection{Carbon Emission Model}
+
+Total emissions are calculated as:
+
+\begin{equation}
+E_{CO2}(t) = \beta \cdot P_{diesel}(t)
+\end{equation}
+
+where $\beta$ is the emission factor per unit diesel-generated energy.
+
+---
+
+\subsection{Energy Balance Constraint}
+
+At every time step, the system must satisfy:
+
+\begin{equation}
+P_{pv}(t) + P_{grid}(t) + P_{dis}(t) + P_{diesel}(t) = P_{ev}(t) + P_{ch}(t)
+\end{equation}
+
+---
+
+\subsection{Energy Management Objective}
+
+The system minimizes a weighted cost function:
+
+\begin{equation}
+\min \; J = w_1 C_{fuel} + w_2 E_{CO2} + w_3 P_{grid}^{stress}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $C_{fuel}$ represents diesel fuel cost
+    \item $E_{CO2}$ represents emissions
+    \item $P_{grid}^{stress}$ penalizes grid overloading
+    \item $w_1, w_2, w_3$ are weighting factors
+\end{itemize}
